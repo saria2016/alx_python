@@ -3,3 +3,4 @@ def reverse_string(string):
     for char in string:
         reversed_str = char + reversed_str
     return reversed_str
+
