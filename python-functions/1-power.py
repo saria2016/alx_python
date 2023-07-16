@@ -1,5 +1,5 @@
 def pow(a, b):
-    # Initialize result to 
+    # Initialize result to
     result = 1
     # If b is negative, invert a and make b positive
     if b < 0:
