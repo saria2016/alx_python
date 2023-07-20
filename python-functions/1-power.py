@@ -1,4 +1,9 @@
 def pow(a, b):
+    z = a ** b
+    return z
+'''
+
+
     # Initialize result to
     result = 1
     # If b is negative, invert a and make b positive
@@ -14,3 +19,4 @@ def pow(a, b):
         a *= a
         b //= 2
     return result
+'''
