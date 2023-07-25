@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-def divisible_by_2(my_list=[]):
-    new = []
-    for num in my_list:
-        if num % 2 == 0:
-            new.append(True)
-        else:
-            new.append(False)
-    return new
+def safe_print_division(a, b):
+    try:
+        result = a / b
+    except (ZeroDivisionError, TypeError):
+        result = None
+    finally:
+        print("Inside result: {}".format(result))
+    return result
