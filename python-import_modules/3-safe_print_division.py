@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-def safe_print_division(my_list=[]):
-    new = []
-    for num in my_list:
-        if num % 2 == 0:
-            new.append(True)
-        else:
-            new.append(False)
-    return new
+def safe_print_division(a, b):
+    try:
+        result = a / b
+    except ZeroDivisionError:
+        return None
+    else:
+        return result
+    finally:
+        print("Inside result: {}".format(result))
