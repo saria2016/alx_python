@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-def divisible_by_2(my_list=[]):
+def safe_print_division(my_list=[]):
     new = []
     for num in my_list:
         if num % 2 == 0:
