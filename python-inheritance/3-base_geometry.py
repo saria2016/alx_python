@@ -4,6 +4,5 @@ Creates an empty class"""
 
 
 class BaseGeometry:
-    """Empty class"""
-
-    pass
+    def __init__(self):
+        pass
