@@ -6,5 +6,12 @@ instance of a class that inherited from, the specified class.
 
 
 def is_kind_of_class(obj, a_class):
+    """Finds if object is an instance of class or a class
+    inherited
+    Args:
+        - obj: object to look at
+        - a_class: class to evaluate
+    Returns: True or False
+    """
 
     return isinstance(obj, a_class)
