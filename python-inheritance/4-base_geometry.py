@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-"""
-Creates a class.
-"""
+"""Create BaseGeometry"""
+
 
 class NoInitSubclassMeta(type):
     def __dir__(cls):
@@ -10,7 +9,7 @@ class NoInitSubclassMeta(type):
 
 
 class BaseGeometry(metaclass=NoInitSubclassMeta):
-    """Empty class
+    """BaseGeometry class
     """
     def __dir__(cls):
         """Removing __init_subclass_ attribute
@@ -20,8 +19,9 @@ class BaseGeometry(metaclass=NoInitSubclassMeta):
                 attr != '__init_subclass__']
 
     def area(self):
-        """Raises an Exception with the message
-        'area() is not implemented'.
-        """'
-        
+        """Define Area function.
+
+        Raises:
+            Exception: if area is not implemented.
+        """
         raise Exception("area() is not implemented")
