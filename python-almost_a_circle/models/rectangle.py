@@ -5,21 +5,21 @@ from models.base import Base
 
 
 class Rectangle(Base):
-    """Class that defines properties of Rectangle.
+    """Class Rectangle.
 
     Attributes:
-        width (int): width of rectangle.
-        height (int): height of rectangle.
+        width (int): width .
+        height (int): height.
         x (int): x.
         y (int): y.
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Creates Rectangle object.
+        """Creates instance object.
 
         Args:
-            width (int): width of rectangle.
-            height (int): height of rectangle.
+            width (int): width .
+            height (int): height of.
             x (int): x.
             y (int): y.
         """
@@ -30,7 +30,7 @@ class Rectangle(Base):
         super().__init__(id)
 
     def __str__(self):
-        """Overriding the method 
+        """ method 
 
         Returns:
             str: [Rectangle] (<id>) <x>/<y> - <width>/<height>"""

@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""Defines a class Base"""
+"""Defines Base class """
 
 
 class Base:
-    """Class that defines properties of Base.
+    """Class Base.
 
     Attributes:
         id (int): Identity of each instance.
@@ -11,10 +11,10 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """Creates new instances of Base.
+        """Creates instances of Base.
 
         Args:
-            id (int, optional): Identity of each instance. Defaults to None.
+            id (int, optional): Identity of instance.
         """
         if id == None:
             Base.__nb_objects += 1
