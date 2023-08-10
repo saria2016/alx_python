@@ -2,7 +2,7 @@
 """A script that:
 - sends a request to the URL and displays the value of the variable
 """
-import request, sys
+import requests, sys
 
 if __name__ == "__main__":
     url = sys.argv[1]
