@@ -2,12 +2,10 @@
 """A script that:
 - sends a request to the URL and displays the value of the variable
 """
-import sys
-import urllib.request
+import request, sys
 
 if __name__ == "__main__":
     url = sys.argv[1]
-
-    request = urllib.request.Request(url)
-    with urllib.request.urlopen(request) as response:
-        print(dict(response.headers).get("X-Request-Id"))
+    response = requests.get(url)
+    result = response.headers.get("X-Request-Id")
+    print(result)
