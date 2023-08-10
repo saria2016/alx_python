@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-"""A script that:
-- takes in a URL
-- sends a POST request to the passed URL
-- takes email as a parameter
-- displays the body of the response
+"""
+script that takes in a URL and an email, sends a POST request to the passed
+URL with the email as a parameter, and displays the body of the response.
 """
 import requests
 import sys
