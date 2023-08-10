@@ -2,14 +2,14 @@
 """A script that:
 -  takes in a URL, sends a request to the URL and displays the body of the response
 """
-
+import sys
+import requests
 
 if __name__ == "__main__":
-    import sys
-    from urllib import request, error
-
-    try:
-        with request.urlopen(sys.argv[1]) as res:
-            print(res.read().decode('UTF-8'))
-    except error.HTTPError as er:
-        print('Error code:', er.code)
+    url = sys.argv[1]
+    response = requests.get(url)
+    body = response.text
+    if response.status_code >= 400:
+        print("Error code: {}".format(response.status_code))
+    else:
+        print(body)
