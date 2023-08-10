@@ -5,16 +5,14 @@
 - takes email as a parameter
 - displays the body of the response
 """
-import urllib.parse
 import requests
 import sys
 
 
 if __name__ == "__main__":
-    url = sys.argv[1]
-    value = {"email": sys.argv[2]}
-    data = urllib.parse.urlencode(value).encode("ascii")
-
-    request = requests(url, data)
-    with requests.urlopen(request) as response:
-        print(response.read().decode("utf-8"))
+    email = sys.argv[2]
+    payload = {
+        "email": email
+    }
+    response = requests.post(url, data=payload)
+    print(response.text)
