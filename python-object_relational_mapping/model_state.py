@@ -9,6 +9,7 @@ if __name__ == "__main__":
     """
     define class State and create instance
     Base = declarative_base()
+    
     """
     engine = create_engine(
         'mysql+mysqldb://{}:{}@localhost/{}'
