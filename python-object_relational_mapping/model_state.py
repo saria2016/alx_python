@@ -6,6 +6,10 @@ from model_state import Base, State
 from sqlalchemy import (create_engine)
 
 if __name__ == "__main__":
+    """
+    define class State and create instance
+    Base = declarative_base()
+    """
     engine = create_engine(
         'mysql+mysqldb://{}:{}@localhost/{}'
         .format(argv[1], argv[2],
