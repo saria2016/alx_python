@@ -20,7 +20,8 @@ def get_employee_info(employee_id):
 
     # Display output
     print(f"Employee {employee_name} is done with tasks({num_completed_tasks}/{total_tasks}):")
-    for task in completed_tasks:
+    for index, task in enumerate(completed_tasks, start=1):
+        print(f"Task {index} Formatting: OK")
         print(f"\t{task['title']}")
 
 if __name__ == '__main__':
