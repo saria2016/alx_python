@@ -1,6 +1,6 @@
+import csv
 import requests
 import sys
-import csv
 
 
 def export_to_csv(employee_id):
