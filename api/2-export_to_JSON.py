@@ -1,47 +1,35 @@
+#!/usr/bin/python3
 """
-This script uses an API to retrieve employee task information
-and display in a special format.
+Python script to export data to a JSON file.
+"""
 
-It retrieves employees name, task completed with their titles.
-"""
 import json
 import requests
 import sys
 
-# No execution of this file when imported
+
+def export_to_CSV(user_id):
+    employee_name = requests.get(
+        "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
+    ).json()["username"]
+    tasks = requests.get(
+        "https://jsonplaceholder.typicode.com/users/{}/todos".format(user_id)
+    ).json()
+
+    tasks_data = {str(user_id): []}
+
+    for task in tasks:
+        tasks_data[str(user_id)].append(
+            {
+                "task": task["title"],
+                "completed": task["completed"],
+                "username": employee_name,
+            }
+        )
+
+    with open(str(user_id) + ".json", "w", encoding="UTF8", newline="") as f:
+        json.dump(tasks_data, f)
+
+
 if __name__ == "__main__":
-    
-# Pass employee id on command line
-    id = sys.argv[1]
-
-# APIs 
-    userTodoURL = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
-    userProfile = "https://jsonplaceholder.typicode.com/users/{}".format(id)
-
-# Make requests on APIs
-    todoResponse = requests.get(userTodoURL)
-    profileResponse = requests.get(userProfile)
-
-# Parse responses and store in variables
-    todoJson_Data = todoResponse.json()
-    profileJson_Data = profileResponse.json()
-
-#Get employee information
-    employeeName = profileJson_Data['username']
-
-    dataList = []# Empty list to store the dictionaries
-
-    for data in todoJson_Data:
-        dataDict = {"task":data['title'], "completed":data['completed'], "username":employeeName}
-        dataList.append(dataDict)
-
-# A dictionary of list of dictionaries to be exported to JSON
-    outputData = {profileJson_Data['id']: dataList}
-
-# Specify the JSON file path
-    json_file_path = '{}.json'.format(todoJson_Data[0]['userId'])
-
-# Open the JSON file in write mode
-    with open(json_file_path, 'w') as json_file:
-    # Serialize and write the data to the JSON file
-        json.dump(outputData, json_file)
+    export_to_CSV(sys.argv[1])
