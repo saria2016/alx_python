@@ -1,45 +1,22 @@
-#!/usr/bin/python3
-"""
-Python script to export data in the CSV format.
-"""
-
+'''
+This module export content from an api into a csv file define on creation
+return : csv
+'''
 import csv
 import requests
 import sys
 
+user_id = str(sys.argv[1])
 
-def export_to_CSV(user_id):
-    employee_name = requests.get(
-        "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
-    ).json()["name"]
-    tasks = requests.get(
-        "https://jsonplaceholder.typicode.com/users/{}/todos".format(user_id)
-    ).json()
+user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(user_id)
+todo_url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(user_id)
 
-    tasks_data = []
+user_data = requests.get(user_url).json()
+todo_data = requests.get(todo_url).json()
 
-    for task in tasks:
-        tasks_data.append(
-            [
-                str(user_id),
-                employee_name,
-                task["completed"],
-                task["title"],
-            ]
-        )
+filename = "{}.csv".format(user_id)
 
-    with open(str(user_id) + ".csv", "w", encoding="UTF8", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerows(tasks_data)
-
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python3 script_name.py EMPLOYEE_ID")
-        sys.exit(1)
-
-    try:
-        employee_id = int(sys.argv[1])
-        export_to_CSV(employee_id)
-    except ValueError:
-        print("Please provide a valid employee ID.")
+with open(filename, 'w', newline='') as file:
+    writter = csv.writer(file, quoting = csv.QUOTE_ALL)
+    for task in todo_data:
+        writter.writerow([user_id, str(user_data['username']),task['completed'], task['title']])
